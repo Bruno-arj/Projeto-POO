@@ -8,8 +8,7 @@ public class Auditorio extends Espaco {
 
 	public double calcularCustoReserva(long horas) {
 		double valor = horas * this.precoPorHora;
-		double teste;
-		double teste2;
+		double x;
 		return valor + 100.0;
 	}
 	

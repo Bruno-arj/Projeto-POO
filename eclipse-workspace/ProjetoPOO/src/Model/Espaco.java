@@ -16,20 +16,13 @@ public abstract class Espaco {
         this.precoPorHora = precoPorHora;
     }
 	
-
-
 	public String getId() {
 		return id;
 	}
 
-
-
-
 	public String getNome() {
 		return nome;
 	}
-
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
