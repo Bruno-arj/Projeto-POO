@@ -11,4 +11,8 @@ public class Auditorio extends Espaco {
 		return valor + 100.0;
 	}
 	
+	public void teste() {
+		
+	}
+	 
 }
