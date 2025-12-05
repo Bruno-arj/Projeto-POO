@@ -10,7 +10,6 @@ public class Pagamento {
 	protected String metodo;
 	
 	public Pagamento(int id, String idReserva, double valorPago, LocalDateTime dataPagamento, String metodo) {
-		super();
 		this.id = id;
 		this.idReserva = idReserva;
 		this.valorPago = valorPago;
@@ -18,7 +17,7 @@ public class Pagamento {
 		this.metodo = metodo;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

@@ -17,7 +17,6 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         this.arquivo = new File("data/" + nomeArquivo);
         this.tipoLista = tipoLista;
 
-        // cria arquivo se não existir
         if (!arquivo.exists()) {
             try {
                 arquivo.getParentFile().mkdirs();
@@ -46,4 +45,42 @@ public abstract class DAOJson<T> implements Persistencia<T> {
             e.printStackTrace();
         }
     }
+
+    public void salvar(T obj) {
+        List<T> lista = carregarLista();
+        lista.add(obj);
+        salvarLista(lista);
+    }
+
+    public T buscar(int id) {
+        List<T> lista = carregarLista();
+        for (T obj : lista) {
+            try {
+                int objId = (int) obj.getClass().getMethod("getId").invoke(obj);
+                if (objId == id) return obj;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    public List<T> listar() {
+        return carregarLista();
+    }
+
+    public void remover(int id) {
+        List<T> lista = carregarLista();
+        lista.removeIf(obj -> {
+            try {
+                int objId = (int) obj.getClass().getMethod("getId").invoke(obj);
+                return objId == id;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        });
+        salvarLista(lista);
+    }
 }
+

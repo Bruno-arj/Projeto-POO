@@ -20,7 +20,7 @@ public abstract class Espaco {
     	
     }
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

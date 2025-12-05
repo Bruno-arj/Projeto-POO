@@ -17,7 +17,6 @@ public class Reserva {
 	
 	public Reserva(int id, Espaco espaco, LocalDateTime inicio, LocalDateTime fim, double valorCalculado,
 			boolean cancelada, double taxaCancelamento, LocalDateTime dataCancelamento) {
-		super();
 		this.id = id;
 		this.espaco = espaco;
 		this.inicio = inicio;
@@ -30,7 +29,7 @@ public class Reserva {
 	
 	
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
