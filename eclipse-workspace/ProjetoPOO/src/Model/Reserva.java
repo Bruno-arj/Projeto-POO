@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Reserva {
-	protected String id;
+	protected int id;
 	protected Espaco espaco;
 	protected LocalDateTime inicio;
 	protected LocalDateTime fim;
@@ -15,7 +15,7 @@ public class Reserva {
 	protected LocalDateTime dataCancelamento;
 	
 	
-	public Reserva(String id, Espaco espaco, LocalDateTime inicio, LocalDateTime fim, double valorCalculado,
+	public Reserva(int id, Espaco espaco, LocalDateTime inicio, LocalDateTime fim, double valorCalculado,
 			boolean cancelada, double taxaCancelamento, LocalDateTime dataCancelamento) {
 		super();
 		this.id = id;

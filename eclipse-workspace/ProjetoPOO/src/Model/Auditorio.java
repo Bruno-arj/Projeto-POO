@@ -2,7 +2,7 @@ package Model;
 
 public class Auditorio extends Espaco {
 
-	public Auditorio(String id, String nome, int capacidade, boolean disponivel) {
+	public Auditorio(int id, String nome, int capacidade, boolean disponivel) {
 		super(id, nome, capacidade, disponivel, 120.0);
 	}
 

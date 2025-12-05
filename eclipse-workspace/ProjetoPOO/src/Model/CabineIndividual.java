@@ -2,8 +2,12 @@ package Model;
 
 public class CabineIndividual extends Espaco {
 
-	public CabineIndividual(String id, String nome, int capacidade, boolean disponivel) {
+	public CabineIndividual(int id, String nome, int capacidade, boolean disponivel) {
 		super(id, nome, capacidade, disponivel, 50.0);
+	}
+	
+	public CabineIndividual() {
+		super();
 	}
 
 	public double calcularCustoReserva(long horas) {

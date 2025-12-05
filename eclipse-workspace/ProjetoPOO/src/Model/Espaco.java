@@ -2,18 +2,22 @@ package Model;
 
 public abstract class Espaco {
 
-    protected String id;
+    protected int id;
     protected String nome;
     protected int capacidade;
     protected boolean disponivel;
     protected double precoPorHora;
 
-    public Espaco(String id, String nome, int capacidade, boolean disponivel, double precoPorHora) {
+    public Espaco(int id, String nome, int capacidade, boolean disponivel, double precoPorHora) {
         this.id = id;
         this.nome = nome;
         this.capacidade = capacidade;
         this.disponivel = disponivel;
         this.precoPorHora = precoPorHora;
+    }
+    
+    public Espaco() {
+    	
     }
 	
 	public String getId() {

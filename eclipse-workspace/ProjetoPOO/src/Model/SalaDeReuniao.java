@@ -5,7 +5,7 @@ public class SalaDeReuniao extends Espaco{
 	protected boolean projetor;
 		
 	
-	public SalaDeReuniao(String id, String nome, int capacidade, boolean disponivel, boolean projetor) {
+	public SalaDeReuniao(int id, String nome, int capacidade, boolean disponivel, boolean projetor) {
 		super(id, nome, capacidade, disponivel, 80.0);
 		this.projetor = projetor;
 	}
