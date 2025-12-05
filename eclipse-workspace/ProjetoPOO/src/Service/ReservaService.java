@@ -47,5 +47,5 @@ public class ReservaService {
 	public ArrayList<SalaDeReuniao> getListaSalaDeReuniao() {
 		return listaSalaDeReuniao;
 	}
-	
+
 }
