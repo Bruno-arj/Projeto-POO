@@ -63,6 +63,12 @@ public abstract class Espaco {
 
 
 
+	@Override
+	public String toString() {
+		return "Espaco [id=" + id + ", nome=" + nome + ", capacidade=" + capacidade + ", disponivel=" + disponivel
+				+ ", precoPorHora=" + precoPorHora + "]";
+	}
+
 	public abstract double calcularCustoReserva(long horas);
 	
 }

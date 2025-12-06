@@ -10,13 +10,11 @@ public class Reserva {
 	protected LocalDateTime fim;
 	protected double valorCalculado;
 	protected boolean cancelada;
-	
 	protected double taxaCancelamento;
-	protected LocalDateTime dataCancelamento;
 	
 	
 	public Reserva(int id, Espaco espaco, LocalDateTime inicio, LocalDateTime fim, double valorCalculado,
-			boolean cancelada, double taxaCancelamento, LocalDateTime dataCancelamento) {
+			boolean cancelada, double taxaCancelamento) {
 		this.id = id;
 		this.espaco = espaco;
 		this.inicio = inicio;
@@ -24,7 +22,6 @@ public class Reserva {
 		this.valorCalculado = valorCalculado;
 		this.cancelada = cancelada;
 		this.taxaCancelamento = taxaCancelamento;
-		this.dataCancelamento = dataCancelamento;
 	}
 	
 	
@@ -56,11 +53,6 @@ public class Reserva {
 	public double getTaxaCancelamento() {
 		return taxaCancelamento;
 	}
-
-	
-	public LocalDateTime getDataCancelamento() {
-		return dataCancelamento;
-	}
 	
 	public long getDuracaoEmHoras() {
 		return Duration.between(inicio, fim).toHours();
@@ -68,6 +60,14 @@ public class Reserva {
 	
 	public double calcularValor() {
 		return espaco.calcularCustoReserva(getDuracaoEmHoras());
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Reserva [id=" + id + ", espaco=" + espaco + ", inicio=" + inicio + ", fim=" + fim + ", valorCalculado="
+				+ valorCalculado + ", cancelada=" + cancelada + ", taxaCancelamento=" + taxaCancelamento + "]";
 	}
 	
 	
