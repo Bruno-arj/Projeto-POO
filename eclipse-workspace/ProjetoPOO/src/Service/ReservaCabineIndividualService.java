@@ -27,7 +27,7 @@ public class ReservaCabineIndividualService {
 		long horas = duracao.toHours();
 		double custo = cabineIndividual.calcularCustoReserva(horas);
 		
-		Reserva reserva = new Reserva(id, cabineIndividual, inicio, fim, custo,false, 0.2);
+		Reserva reserva = new Reserva(id, cabineIndividual, inicio, fim, custo,false);
 		
 		AdicionarListaCabine(reserva);
 		return "Reserva bem sucedida";

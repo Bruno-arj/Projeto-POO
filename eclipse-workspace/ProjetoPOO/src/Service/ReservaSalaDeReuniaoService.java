@@ -28,7 +28,7 @@ public class ReservaSalaDeReuniaoService {
 		long horas = duracao.toHours();
 		double custo = salaDeReuniao.calcularCustoReserva(horas);
 		
-		Reserva reserva = new Reserva(id, salaDeReuniao, inicio, fim, custo,false, 0.2);
+		Reserva reserva = new Reserva(id, salaDeReuniao, inicio, fim, custo,false);
 		
 		AdicionarListaSalaDeReuniao(reserva);
 		return "Reserva bem sucedida";

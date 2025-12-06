@@ -25,7 +25,7 @@ public class ReservaAuditorioService {
 		long horas = duracao.toHours();
 		double custo = auditorio.calcularCustoReserva(horas);
 		
-		Reserva reserva = new Reserva(id, auditorio, inicio, fim, custo,false, 0.2);
+		Reserva reserva = new Reserva(id, auditorio, inicio, fim, custo,false);
 		
 		AdicionarListaAuditorio(reserva);
 		return "Reserva bem sucedida";
