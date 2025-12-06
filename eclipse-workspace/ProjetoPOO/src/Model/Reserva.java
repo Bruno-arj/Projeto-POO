@@ -61,8 +61,10 @@ public class Reserva {
 	public double calcularValor() {
 		return espaco.calcularCustoReserva(getDuracaoEmHoras());
 	}
-
-
+	
+	public void setCancelada(boolean cancelada) {
+		this.cancelada = cancelada;
+	}
 
 	@Override
 	public String toString() {
