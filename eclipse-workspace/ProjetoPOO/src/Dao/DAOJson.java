@@ -52,6 +52,7 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         salvarLista(lista);
     }
 
+    
     public T buscar(int id) {
         List<T> lista = carregarLista();
         for (T obj : lista) {
@@ -65,10 +66,14 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         return null;
     }
 
+    
+    
     public List<T> listar() {
         return carregarLista();
     }
 
+    
+    
     public void remover(int id) {
         List<T> lista = carregarLista();
         lista.removeIf(obj -> {
@@ -81,6 +86,29 @@ public abstract class DAOJson<T> implements Persistencia<T> {
             }
         });
         salvarLista(lista);
+    }
+    
+    
+    
+    public void editar(T objAtualizado) {
+        List<T> lista = carregarLista();
+
+        try {
+            int idAtualizado = (int) objAtualizado.getClass().getMethod("getId").invoke(objAtualizado);
+
+            for (int i = 0; i < lista.size(); i++) {
+                T item = lista.get(i);
+                int idItem = (int) item.getClass().getMethod("getId").invoke(item);
+
+                if (idItem == idAtualizado) {
+                    lista.set(i, objAtualizado);   
+                    salvarLista(lista);            
+                    return;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
