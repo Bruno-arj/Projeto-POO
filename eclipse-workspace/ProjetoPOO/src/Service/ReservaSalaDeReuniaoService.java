@@ -34,11 +34,11 @@ public class ReservaSalaDeReuniaoService {
 		return "Reserva bem sucedida";
 	}
 	
-	public LocalDateTime ConverterData(String data) {
+	private LocalDateTime ConverterData(String data) {
 		return LocalDateTime.parse(data, formato);
 	}
 	
-	public String VerificarDatas(LocalDateTime inicio, LocalDateTime fim) {
+	private String VerificarDatas(LocalDateTime inicio, LocalDateTime fim) {
 		for (int i = 0; i < listaSalaDeReuniao.size() ; i++ ) {
 			if (inicio.isBefore(listaSalaDeReuniao.get(i).getFim())) {
 				return "Erro conflito";

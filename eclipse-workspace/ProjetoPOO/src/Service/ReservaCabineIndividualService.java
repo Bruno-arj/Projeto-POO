@@ -22,6 +22,9 @@ public class ReservaCabineIndividualService {
 		else if(inicio.equals(fim)) {
 			return "Erro throws quando der certo coloca pra retorna preco";
 		}
+		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
+			return "Erro conflito";
+		}
 		CabineIndividual cabineIndividual = new CabineIndividual(id,nome,capacidade,disponivel);
 		Duration duracao = Duration.between(inicio, fim);
 		long horas = duracao.toHours();
@@ -33,7 +36,19 @@ public class ReservaCabineIndividualService {
 		return "Reserva bem sucedida";
 	}
 	
-	public LocalDateTime ConverterData(String data) {
+	private String VerificarDatas(LocalDateTime inicio, LocalDateTime fim) {
+		for (int i = 0; i < listaIndividual.size() ; i++ ) {
+			if (inicio.isBefore(listaIndividual.get(i).getFim())) {
+				return "Erro conflito";
+			}
+			else if (fim.isBefore(listaIndividual.get(i).getFim())) {
+				return "Erro conflito";
+			}		
+		}
+		return "Tudo certo";
+	}
+	
+	private LocalDateTime ConverterData(String data) {
 		return LocalDateTime.parse(data, formato);
 	}
 	

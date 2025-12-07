@@ -30,7 +30,7 @@ public class CancelamentoService {
 			return "Reserva cancelada sem pagamento de taxa";
 		}
 	}
-	public void AdicionarListaCancelada(Reserva reserva) {
+	private void AdicionarListaCancelada(Reserva reserva) {
 		listaCancelamento.add(reserva);
 	}
 }

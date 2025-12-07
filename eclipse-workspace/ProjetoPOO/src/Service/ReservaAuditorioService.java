@@ -20,6 +20,9 @@ public class ReservaAuditorioService {
 		else if(inicio.equals(fim)) {
 			return "Erro throws quando der certo coloca pra retorna preco";
 		}
+		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
+			return "Erro conflito";
+		}
 		Auditorio auditorio = new Auditorio(id,nome,capacidade,disponivel);
 		Duration duracao = Duration.between(inicio, fim);
 		long horas = duracao.toHours();
@@ -31,7 +34,18 @@ public class ReservaAuditorioService {
 		return "Reserva bem sucedida";
 	}
 	
-	public LocalDateTime ConverterData(String data) {
+	private String VerificarDatas(LocalDateTime inicio, LocalDateTime fim) {
+		for (int i = 0; i < listaAuditorio.size() ; i++ ) {
+			if (inicio.isBefore(listaAuditorio.get(i).getFim())) {
+				return "Erro conflito";
+			}
+			else if (fim.isBefore(listaAuditorio.get(i).getFim())) {
+				return "Erro conflito";
+			}		
+		}
+		return "Tudo certo";
+	}
+	private LocalDateTime ConverterData(String data) {
 		return LocalDateTime.parse(data, formato);
 	}
 
