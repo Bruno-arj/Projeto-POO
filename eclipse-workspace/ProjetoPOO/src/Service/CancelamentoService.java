@@ -1,11 +1,8 @@
 package Service;
 import Model.Reserva;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class CancelamentoService {
-	ArrayList<Reserva> listaCancelamento = new ArrayList<Reserva>();
-
 	public double VerificarHoras(Reserva reserva) {
 		LocalDateTime dataReserva = reserva.getInicio();
 		LocalDateTime agora = LocalDateTime.now();
@@ -22,15 +19,10 @@ public class CancelamentoService {
 	public String Cancelamento(Reserva reserva) {
 		if(VerificarHoras(reserva) != 0) {
 			reserva.setCancelada(true);
-			AdicionarListaCancelada(reserva);
 			return "Reserva cancelada com pagamento de taxa";
 		} else {
 			reserva.setCancelada(true);
-			AdicionarListaCancelada(reserva);
 			return "Reserva cancelada sem pagamento de taxa";
 		}
-	}
-	private void AdicionarListaCancelada(Reserva reserva) {
-		listaCancelamento.add(reserva);
 	}
 }
