@@ -14,8 +14,13 @@ public class SalaDeReuniao extends Espaco{
 	public boolean isProjetor() {
 		return projetor;
 	}
-
 	
+
+	public void setProjetor(boolean projetor) {
+		this.projetor = projetor;
+	}
+
+
 	public double calcularCustoReserva(long horas) {
 		double valor = horas * precoPorHora;
 		if (this.projetor) {

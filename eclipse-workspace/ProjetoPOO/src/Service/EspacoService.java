@@ -27,6 +27,12 @@ public class EspacoService {
         if (espaco.getCapacidade() <= 0)
             throw new IllegalArgumentException("Capacidade inválida");
         
+        for (Espaco e : espacoDAO.listar()) {
+            if (e.getNome().equalsIgnoreCase(espaco.getNome())) {
+                throw new IllegalArgumentException("Nome já utilizado");
+            }
+        }
+        
         espaco.setId(gerarId());
 
         espacoDAO.salvar(espaco);
