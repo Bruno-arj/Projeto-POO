@@ -26,13 +26,13 @@ public class ReservaService {
 		LocalDateTime inicio = ConverterData(datainicio);
 		LocalDateTime fim = ConverterData(datafim);
 		if (fim.isBefore(inicio)) {
-			return "é antes Erro throws quando der certo coloca pra retorna o preco";
+			return "Erro data de fim antes do inicio";
 		}
 		else if(inicio.equals(fim)) {
-			return "inicio fim";
+			return "Erro data de inicio igual a data de fim";
 		}
 		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
-			return "Erro conflito";
+			return "Erro conflito de datas";
 		} 
 
 		Duration duracao = Duration.between(inicio, fim);
