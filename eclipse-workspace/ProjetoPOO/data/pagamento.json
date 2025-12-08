@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "nome": "Lago azul",
+    "capacidade": 0,
+    "disponivel": false,
+    "precoPorHora": 120.0
+  }
+]
