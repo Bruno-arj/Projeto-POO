@@ -6,7 +6,9 @@ public class Main {
 	public static void main(String[] args) {
 				Scanner in = new Scanner(System.in);
 				int menu = 0;
+				EspacoDificilService service = new EspacoDificilService();
 				
+				System.out.print(service.listarIndividual());
 				do {
 				    try {
 				        System.out.println("--- Menu do Gerenciamento de Coworking ---");

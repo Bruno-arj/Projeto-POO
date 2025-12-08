@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 
 public class Pagamento {
 	protected int id;
-	protected String idReserva;
+	protected int idReserva;
 	protected double valorPago;
 	protected LocalDateTime dataPagamento;
 	protected String metodo;
 	
-	public Pagamento(int id, String idReserva, double valorPago, LocalDateTime dataPagamento, String metodo) {
+	public Pagamento(int id, int idReserva, double valorPago, LocalDateTime dataPagamento, String metodo) {
 		this.id = id;
 		this.idReserva = idReserva;
 		this.valorPago = valorPago;
@@ -21,7 +21,7 @@ public class Pagamento {
 		return id;
 	}
 
-	public String getIdReserva() {
+	public int getIdReserva() {
 		return idReserva;
 	}
 

@@ -1,9 +1,11 @@
 package View;
 import Service.*;
 import java.util.Scanner;
+import Service.EspacoDificilService;
 
 public class CadastroEspacoView {
 	static Scanner in = new Scanner(System.in);
+	static EspacoDificilService service = new EspacoDificilService();
 	
 	public static void MostrarCadastro() {
 		int escolha = 0;
@@ -51,6 +53,7 @@ public class CadastroEspacoView {
 		    }
 		    System.out.println("Erro: o nome não pode estar vazio. Tente novamente.");
 		}
+		service.auditorio(0, nome, 0, false);
 
 	}
 	public static void Auditorio() {
@@ -80,7 +83,7 @@ public class CadastroEspacoView {
 		        in.nextLine();
 		    }
 		}
-
+		service.auditorio(0, nome, capacidade, false);
 	}
 	public static void SalaDeReuniao() {
 		boolean projetor = false;
@@ -123,6 +126,7 @@ public class CadastroEspacoView {
 		        System.out.println("Erro: responda apenas com 'Sim' ou 'Não'.");
 		    }
 		}
+		service.salaDeReuniao(0, nome, capacidade, projetor, projetor);
 
 	}
 }

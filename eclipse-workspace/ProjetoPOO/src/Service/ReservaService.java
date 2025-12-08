@@ -65,4 +65,7 @@ public class ReservaService {
 	public List<Reserva> listar() {
         return reservaDao.listar();
     }
+	public Reserva buscarPorId(int id) {
+        return reservaDao.buscar(id);
+    }
 }
