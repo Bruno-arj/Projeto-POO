@@ -58,7 +58,6 @@ public class RelatoriosView {
         } while (opcao != 5);
     }
 
-    // Relatório 1: Reservas em um período
     private static void relatorioReservasPorPeriodo() {
         System.out.println("\n--- Relatório: Reservas por Período ---");
         try {
@@ -77,7 +76,6 @@ public class RelatoriosView {
             System.out.println("------------------------------------------------------------------");
 
             for (Reserva r : todasReservas) {
-                // Verifica se a reserva está dentro do intervalo e não foi cancelada
                 if (!r.isCancelada() &&
                     (r.getInicio().isEqual(inicio) || r.getInicio().isAfter(inicio)) &&
                     (r.getFim().isEqual(fim) || r.getFim().isBefore(fim))) {
@@ -100,7 +98,6 @@ public class RelatoriosView {
         }
     }
 
-    // Relatório 2: Faturamento por Tipo de Espaço
     private static void relatorioFaturamentoPorTipo() {
         System.out.println("\n--- Relatório: Faturamento por Tipo ---");
         double totalCabine = 0;
@@ -112,7 +109,6 @@ public class RelatoriosView {
         for (Reserva r : lista) {
             if (!r.isCancelada()) {
                 Espaco e = r.getEspaco();
-                // Usa instanceof para descobrir qual é o tipo da classe filha
                 if (e instanceof CabineIndividual) {
                     totalCabine += r.getValorCalculado();
                 } else if (e instanceof Auditorio) {
@@ -130,7 +126,6 @@ public class RelatoriosView {
         System.out.printf("TOTAL GERAL:       R$ %.2f\n", (totalCabine + totalAuditorio + totalSala));
     }
 
-    // Relatório 3: Utilização por Espaço (Total de horas reservadas)
     private static void relatorioUtilizacaoPorEspaco() {
         System.out.println("\n--- Relatório: Utilização por Espaço ---");
         Map<String, Long> utilizacao = calcularUtilizacao();
@@ -148,7 +143,6 @@ public class RelatoriosView {
         }
     }
 
-    // Relatório 4: Top Espaços Mais Utilizados
     private static void relatorioTopEspacos() {
         System.out.println("\n--- Relatório: Top Espaços Mais Utilizados ---");
         Map<String, Long> utilizacao = calcularUtilizacao();
@@ -158,16 +152,15 @@ public class RelatoriosView {
             return;
         }
 
-        // Ordenar o Map pelos valores (horas) de forma decrescente
         utilizacao.entrySet().stream()
                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
-                .limit(5) // Pega apenas os top 5
+                .limit(3) 
                 .forEach(entry -> {
                     System.out.printf("Espaço: %-15s - Total: %d horas\n", entry.getKey(), entry.getValue());
                 });
     }
 
-    // Método auxiliar para calcular horas por espaço (reutilizado nos relatórios 3 e 4)
+
     private static Map<String, Long> calcularUtilizacao() {
         Map<String, Long> mapaUtilizacao = new HashMap<>();
         List<Reserva> lista = reservaService.listar();
@@ -177,7 +170,7 @@ public class RelatoriosView {
                 String nomeEspaco = r.getEspaco().getNome();
                 long horas = r.getDuracaoEmHoras();
 
-                // Soma as horas se já existir, ou adiciona se for novo
+
                 mapaUtilizacao.put(nomeEspaco, mapaUtilizacao.getOrDefault(nomeEspaco, 0L) + horas);
             }
         }

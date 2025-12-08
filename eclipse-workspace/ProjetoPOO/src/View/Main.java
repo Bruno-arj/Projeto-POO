@@ -43,7 +43,7 @@ public class Main {
 	                    ;
 	                    break;
 	                case 5:
-	                    ;
+	                	RelatoriosView.MenuRelatorios();
 	                    break;
 	                case 6:
 	                    System.out.println("Encerrando...");
