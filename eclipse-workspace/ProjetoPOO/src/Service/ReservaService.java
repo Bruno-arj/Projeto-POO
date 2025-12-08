@@ -3,9 +3,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import Model.Espaco;
-import Model.CabineIndividual;
-import Model.Reserva;
+import Model.*;
 import Dao.ReservaDAO;
 
 public class ReservaService {
@@ -21,7 +19,57 @@ public class ReservaService {
         return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
     }
 	
-	public String reserva(CabineIndividual espaco, String datainicio, String datafim) {
+	public String reservaCabineIndividual(CabineIndividual espaco, String datainicio, String datafim) {
+		
+		LocalDateTime inicio = ConverterData(datainicio);
+		LocalDateTime fim = ConverterData(datafim);
+		if (fim.isBefore(inicio)) {
+			return "Erro data de fim antes do inicio";
+		}
+		else if(inicio.equals(fim)) {
+			return "Erro data de inicio igual a data de fim";
+		}
+		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
+			return "Erro conflito de datas";
+		} 
+
+		Duration duracao = Duration.between(inicio, fim);
+		long horas = duracao.toHours();
+		double custo = espaco.calcularCustoReserva(horas);
+		
+		Reserva reserva = new Reserva(gerarId(), espaco, inicio, fim, custo,false);
+		reservaDao.salvar(reserva);
+	
+		return "Reserva bem sucedida";
+		
+	}
+	
+	public String reservaAuditorio(Auditorio espaco, String datainicio, String datafim) {
+		
+		LocalDateTime inicio = ConverterData(datainicio);
+		LocalDateTime fim = ConverterData(datafim);
+		if (fim.isBefore(inicio)) {
+			return "Erro data de fim antes do inicio";
+		}
+		else if(inicio.equals(fim)) {
+			return "Erro data de inicio igual a data de fim";
+		}
+		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
+			return "Erro conflito de datas";
+		} 
+
+		Duration duracao = Duration.between(inicio, fim);
+		long horas = duracao.toHours();
+		double custo = espaco.calcularCustoReserva(horas);
+		
+		Reserva reserva = new Reserva(gerarId(), espaco, inicio, fim, custo,false);
+		reservaDao.salvar(reserva);
+	
+		return "Reserva bem sucedida";
+		
+	}
+	
+	public String reservaSalaDeReuniao(SalaDeReuniao espaco, String datainicio, String datafim) {
 		
 		LocalDateTime inicio = ConverterData(datainicio);
 		LocalDateTime fim = ConverterData(datafim);

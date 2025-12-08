@@ -17,23 +17,31 @@ public class EspacoDificilService {
         this.SalaDeReuniaoDAO = new SalaDeReuniaoDAO();
     }
 
-    private int gerarId() {
+    private int gerarIdCabineIndividual() {
         List<CabineIndividual> lista = CabineIndividualDAO.listar();
+        return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
+    }
+    private int gerarIdAuditorio() {
+        List<Auditorio> lista = AuditorioDAO.listar();
+        return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
+    }
+    private int gerarIdSalaDeReuniao() {
+        List<SalaDeReuniao> lista = SalaDeReuniaoDAO.listar();
         return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
     }
     
 	public void cabineindividual(int id, String nome, int capacidade, boolean disponivel) {
-		CabineIndividual cabineIndividual = new CabineIndividual(gerarId(),nome,1,false);
+		CabineIndividual cabineIndividual = new CabineIndividual(gerarIdCabineIndividual(),nome,1,false);
 		CabineIndividualDAO.salvar(cabineIndividual);
 	}
 	
 	public void auditorio(int id, String nome, int capacidade, boolean disponivel) {
-		Auditorio auditorio = new Auditorio(gerarId(),nome,capacidade,false);
+		Auditorio auditorio = new Auditorio(gerarIdAuditorio(),nome,capacidade,false);
 		AuditorioDAO.salvar(auditorio);
 	}
 	
 	public void salaDeReuniao(int id, String nome, int capacidade, boolean disponivel,boolean projetor) {
-		SalaDeReuniao salaDeReuniao = new SalaDeReuniao(gerarId(),nome,1,false,projetor);
+		SalaDeReuniao salaDeReuniao = new SalaDeReuniao(gerarIdSalaDeReuniao(),nome,1,false,projetor);
 		SalaDeReuniaoDAO.salvar(salaDeReuniao);
 	}
 	

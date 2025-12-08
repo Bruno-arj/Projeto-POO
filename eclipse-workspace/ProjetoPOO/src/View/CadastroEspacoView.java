@@ -73,7 +73,7 @@ public class CadastroEspacoView {
 		    try {
 		        capacidade = in.nextInt();
 		        in.nextLine(); 
-		        if (capacidade <= 0) {
+		        if (capacidade >= 0) {
 		            break;
 		        } else {
 		            System.out.println("Erro: a capacidade deve ser maior que zero.");
