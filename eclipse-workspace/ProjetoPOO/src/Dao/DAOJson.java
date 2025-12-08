@@ -1,6 +1,5 @@
 package Dao;
 
-import Model.Espaco;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public abstract class DAOJson<T> implements Persistencia<T> {
     private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
             .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-            .registerTypeAdapter(Espaco.class, new EspacoAdapter()) // <--- ADICIONE ESTA LINHA
             .setPrettyPrinting()
             .create();
 
