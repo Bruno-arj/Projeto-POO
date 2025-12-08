@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public class SalaDeReuniaoDAO extends DAOJson<SalaDeReuniao> {
 	public SalaDeReuniaoDAO() {
-		super("pagamento.json", new TypeToken<ArrayList<SalaDeReuniao>>(){}.getType());
+		super("salaDeReuniao.json", new TypeToken<ArrayList<SalaDeReuniao>>(){}.getType());
 	}
 }

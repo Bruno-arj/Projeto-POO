@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public class CabineIndividualDAO extends DAOJson<CabineIndividual> {
 	public CabineIndividualDAO() {
-		super("pagamento.json", new TypeToken<ArrayList<CabineIndividual>>(){}.getType());
+		super("cabine.json", new TypeToken<ArrayList<CabineIndividual>>(){}.getType());
 	}
 }
