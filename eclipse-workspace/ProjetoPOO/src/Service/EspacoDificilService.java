@@ -30,9 +30,10 @@ public class EspacoDificilService {
         return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
     }
     
-	public void cabineindividual(int id, String nome, int capacidade, boolean disponivel) {
+	public CabineIndividual cabineindividual(int id, String nome, int capacidade, boolean disponivel) {
 		CabineIndividual cabineIndividual = new CabineIndividual(gerarIdCabineIndividual(),nome,1,false);
 		CabineIndividualDAO.salvar(cabineIndividual);
+		return cabineIndividual;
 	}
 	
 	public void auditorio(int id, String nome, int capacidade, boolean disponivel) {

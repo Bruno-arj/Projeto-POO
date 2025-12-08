@@ -12,7 +12,7 @@ public class CancelamentoService {
         this.reservaDAO = new ReservaDAO();
     }
 
-    private double calcularTaxaCancelamento(Reserva reserva) {
+    public double calcularTaxaCancelamento(Reserva reserva) {
         LocalDateTime dataInicioReserva = reserva.getInicio();
         LocalDateTime agora = LocalDateTime.now();
         

@@ -164,18 +164,28 @@ public class RelatoriosView {
     }
 
     private static Map<String, Long> calcularUtilizacao() {
+
         Map<String, Long> mapaUtilizacao = new HashMap<>();
-        
         List<Reserva> lista = reservaService.listarTodas();
 
         for (Reserva r : lista) {
-            if (!r.isCancelada()) {
-                String nomeEspaco = r.getEspaco().getNome();
-                long horas = r.getDuracaoEmHoras();
 
-                mapaUtilizacao.put(nomeEspaco, mapaUtilizacao.getOrDefault(nomeEspaco, 0L) + horas);
+            if (r.isCancelada()) continue;
+
+            if (r.getEspaco() == null) {
+                System.out.println("⚠ Reserva ID " + r.getId() + " está sem espaço associado.");
+                continue;
             }
+
+            String nomeEspaco = r.getEspaco().getNome();
+            long horas = r.getDuracaoEmHoras();
+
+            mapaUtilizacao.put(
+                nomeEspaco,
+                mapaUtilizacao.getOrDefault(nomeEspaco, 0L) + horas
+            );
         }
         return mapaUtilizacao;
     }
+
 }

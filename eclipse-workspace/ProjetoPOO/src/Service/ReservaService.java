@@ -2,7 +2,6 @@ package Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import Model.*;
 import Dao.*;
@@ -44,9 +43,6 @@ public class ReservaService {
 		else if(inicio.equals(fim)) {
 			return "Erro data de inicio igual a data de fim";
 		}
-		else if(VerificarDatasCabineIndividual(inicio, fim) == "Erro conflito") {
-			return "Erro conflito de datas";
-		} 
 
 		Duration duracao = Duration.between(inicio, fim);
 		long horas = duracao.toHours();
@@ -55,7 +51,7 @@ public class ReservaService {
 		ReservaCabineIndividual reserva = new ReservaCabineIndividual(gerarIdCabineIndividual(), espaco, inicio, fim, custo,false);
 		reservaCabineIndividualDAO.salvar(reserva);
 	
-		return "Reserva bem sucedida";
+		return "Reserva bem sucedida " + reserva;
 	}
 	
 	public String reservaAuditorio(Auditorio espaco, String datainicio, String datafim) {
@@ -68,9 +64,6 @@ public class ReservaService {
 		else if(inicio.equals(fim)) {
 			return "Erro data de inicio igual a data de fim";
 		}
-		else if(VerificarDatasAuditorio(inicio, fim) == "Erro conflito") {
-			return "Erro conflito de datas";
-		} 
 
 		Duration duracao = Duration.between(inicio, fim);
 		long horas = duracao.toHours();
@@ -79,7 +72,7 @@ public class ReservaService {
 		ReservaAuditorio reserva = new ReservaAuditorio(gerarIdAuditorio(), espaco, inicio, fim, custo,false);
 		reservaAuditorioDAO.salvar(reserva);
 	
-		return "Reserva bem sucedida";
+		return "Reserva bem sucedida" + reserva;
 		
 	}
 	
@@ -93,9 +86,6 @@ public class ReservaService {
 		else if(inicio.equals(fim)) {
 			return "Erro data de inicio igual a data de fim";
 		}
-		else if(VerificarDatasSalaDeReuniao(inicio, fim) == "Erro conflito") {
-			return "Erro conflito de datas";
-		} 
 
 		Duration duracao = Duration.between(inicio, fim);
 		long horas = duracao.toHours();
@@ -104,67 +94,13 @@ public class ReservaService {
 		ReservaSalaDeReuniao reserva = new ReservaSalaDeReuniao(gerarIdSalaDeReuniao(), espaco, inicio, fim, custo,false);
 		reservaSalaDeReuniaoDAO.salvar(reserva);
 	
-		return "Reserva bem sucedida";
+		return "Reserva bem sucedida" + reserva;
 		
 	}
 	
 	private LocalDateTime ConverterData(String data) {
 		return LocalDateTime.parse(data, formato);
 	}
-	
-	private String VerificarDatasCabineIndividual(LocalDateTime inicio, LocalDateTime fim) {
-		for (int i = 0; i < reservaCabineIndividualDAO.listar().size() ; i++ ) {
-			if (inicio.isBefore(reservaCabineIndividualDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}
-			else if (fim.isBefore(reservaCabineIndividualDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}		
-		}
-		return "Tudo certo";
-	}
-	private String VerificarDatasAuditorio(LocalDateTime inicio, LocalDateTime fim) {
-		for (int i = 0; i < reservaAuditorioDAO.listar().size() ; i++ ) {
-			if (inicio.isBefore(reservaAuditorioDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}
-			else if (fim.isBefore(reservaAuditorioDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}		
-		}
-		return "Tudo certo"; 
-	}
-	private String VerificarDatasSalaDeReuniao(LocalDateTime inicio, LocalDateTime fim) {
-		for (int i = 0; i < reservaSalaDeReuniaoDAO.listar().size() ; i++ ) {
-			if (inicio.isBefore(reservaSalaDeReuniaoDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}
-			else if (fim.isBefore(reservaSalaDeReuniaoDAO.listar().get(i).getFim())) {
-				return "Erro conflito";
-			}		
-		}
-		return "Tudo certo"; 
-	}
-	
-	public List<Reserva> listarTodas() {
-        List<Reserva> todas = new ArrayList<>();
-
-        for (ReservaCabineIndividual r : reservaCabineIndividualDAO.listar()) {
-            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
-        }
-
-        for (ReservaAuditorio r : reservaAuditorioDAO.listar()) {
-            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
-        }
-
-        for (ReservaSalaDeReuniao r : reservaSalaDeReuniaoDAO.listar()) {
-            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
-        }
-
-        return todas;
-    }
-	
-	
 	
 	public List<ReservaCabineIndividual> listarCabineIndividual() {
         return reservaCabineIndividualDAO.listar();

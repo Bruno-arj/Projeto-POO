@@ -53,8 +53,8 @@ public class CadastroEspacoView {
 		    }
 		    System.out.println("Erro: o nome não pode estar vazio. Tente novamente.");
 		}
-		service.cabineindividual(0, nome, 0, false);
-
+		;
+		System.out.println("Seu espaço foi cadastrado com sucesso: " + service.cabineindividual(0, nome, 0, false));
 	}
 	public static void Auditorio() {
 		System.out.println("\n--- Reserva de um Auditório ---");

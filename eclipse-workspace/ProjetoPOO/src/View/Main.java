@@ -37,7 +37,7 @@ public class Main {
 	                    ReservaEspacoView.MenuReserva();
 	                    break;
 	                case 3:
-	                    CancelarReservaView.Cancelar();
+	                    CancelarReservaView.MenuCancelamento();
 	                    break;
 	                case 4:
 	                    PagamentoView.realizarPagamento();
