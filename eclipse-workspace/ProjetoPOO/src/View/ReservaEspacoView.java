@@ -9,8 +9,8 @@ public class ReservaEspacoView {
 
 		while (true) {
 		    try {
-		        System.out.println("\n--- Reserva de Espaço ---");    [
-		                                                               .out.print("Digite o id do espaço que deseja reserva: ");
+		        System.out.println("\n--- Reserva de Espaço ---");
+		        System.out.print("Digite o id do espaço que deseja reserva: ");
 		        escolha = Integer.parseInt(in.nextLine());
 
 		        if (escolha >= 0) {
@@ -23,6 +23,6 @@ public class ReservaEspacoView {
 		        System.out.println("\nEntrada inválida! Digite apenas números.\n");
 		    }
 		}
-		System.out.print("Reserva                                                                       ");
+		System.out.print("Reserva Concluida");
 	}
 }
