@@ -16,7 +16,6 @@ public abstract class DAOJson<T> implements Persistencia<T> {
     private File arquivo;
     private Type tipoLista;
 
-    // Gson correto, com adapters
     private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
             .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())

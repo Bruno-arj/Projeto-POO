@@ -34,10 +34,10 @@ public class Main {
 	                    CadastroEspacoView.MostrarCadastro();
 	                    break;
 	                case 2:
-	                    ;
+	                    ReservaEspacoView.MenuReserva();
 	                    break;
 	                case 3:
-	                    ;
+	                    CancelarReservaView.Cancelar();
 	                    break;
 	                case 4:
 	                    ;
