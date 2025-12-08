@@ -2,6 +2,7 @@ package Service;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import Model.*;
 import Dao.*;
@@ -144,6 +145,26 @@ public class ReservaService {
 		}
 		return "Tudo certo"; 
 	}
+	
+	public List<Reserva> listarTodas() {
+        List<Reserva> todas = new ArrayList<>();
+
+        for (ReservaCabineIndividual r : reservaCabineIndividualDAO.listar()) {
+            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
+        }
+
+        for (ReservaAuditorio r : reservaAuditorioDAO.listar()) {
+            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
+        }
+
+        for (ReservaSalaDeReuniao r : reservaSalaDeReuniaoDAO.listar()) {
+            todas.add(new Reserva(r.getId(), r.getEspaco(), r.getInicio(), r.getFim(), r.getValorCalculado(), r.isCancelada()));
+        }
+
+        return todas;
+    }
+	
+	
 	
 	public List<ReservaCabineIndividual> listarCabineIndividual() {
         return reservaCabineIndividualDAO.listar();
