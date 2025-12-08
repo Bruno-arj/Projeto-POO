@@ -70,7 +70,7 @@ public class CancelarReservaView {
 	        boolean menosDe24Horas = agora.isAfter(dataInicioReserva.minusHours(24));
 	        
 	        if (menosDe24Horas) {
-	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê" + cabineIndividual.getValorCalculado()*0.2); 
+	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê R$ " + cabineIndividual.getValorCalculado()*0.2); 
 	        } else {
 	            System.out.println("A reserva está a mais de 24 horas então não será preciso pagar nada");
 	        }
@@ -110,7 +110,7 @@ public class CancelarReservaView {
     	        boolean menosDe24Horas = agora.isAfter(dataInicioReserva.minusHours(24));
     	        
     	        if (menosDe24Horas) {
-    	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê" + Auditorio.getValorCalculado()*0.2); 
+    	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê R$ " + Auditorio.getValorCalculado()*0.2); 
     	        } else {
     	            System.out.println("A reserva está a mais de 24 horas então não será preciso pagar nada");
     	        }
@@ -151,7 +151,7 @@ public class CancelarReservaView {
    	        boolean menosDe24Horas = agora.isAfter(dataInicioReserva.minusHours(24));
    	        
    	        if (menosDe24Horas) {
-   	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê" + SalaDeReuniao.getValorCalculado()*0.2); 
+   	            System.out.println("A reserva está a menos de 24 horas devido a isso tera que pagar uma taxa dê R$ " + SalaDeReuniao.getValorCalculado()*0.2); 
    	        } else {
    	            System.out.println("A reserva está a mais de 24 horas então não será preciso pagar nada");
    	        }

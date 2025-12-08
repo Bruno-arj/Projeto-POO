@@ -6,5 +6,13 @@
     "capacidade": 1,
     "disponivel": false,
     "precoPorHora": 80.0
+  },
+  {
+    "projetor": true,
+    "id": 2,
+    "nome": "Casa",
+    "capacidade": 1,
+    "disponivel": false,
+    "precoPorHora": 80.0
   }
 ]
