@@ -40,7 +40,7 @@ public class Main {
 	                    CancelarReservaView.Cancelar();
 	                    break;
 	                case 4:
-	                    ;
+	                    PagamentoView.realizarPagamento();
 	                    break;
 	                case 5:
 	                	RelatoriosView.MenuRelatorios();

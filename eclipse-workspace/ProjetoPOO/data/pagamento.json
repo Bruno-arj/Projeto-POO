@@ -5,5 +5,12 @@
     "capacidade": 0,
     "disponivel": false,
     "precoPorHora": 120.0
+  },
+  {
+    "id": 2,
+    "nome": "Cabine 1",
+    "capacidade": 0,
+    "disponivel": false,
+    "precoPorHora": 120.0
   }
 ]
