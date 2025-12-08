@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "nome": "fd",
+    "capacidade": 54,
+    "disponivel": false,
+    "precoPorHora": 120.0
+  }
+]

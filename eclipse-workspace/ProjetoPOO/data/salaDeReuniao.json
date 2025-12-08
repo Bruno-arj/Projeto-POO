@@ -1,0 +1,10 @@
+[
+  {
+    "projetor": true,
+    "id": 1,
+    "nome": "dsadasd",
+    "capacidade": 1,
+    "disponivel": false,
+    "precoPorHora": 80.0
+  }
+]

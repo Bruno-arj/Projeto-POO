@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "cabineIndividual": {
+      "id": 1,
+      "nome": "g",
+      "capacidade": 1,
+      "disponivel": false,
+      "precoPorHora": 50.0
+    },
+    "inicio": "2025-12-25T22:00:00",
+    "fim": "2025-12-26T22:00:00",
+    "valorCalculado": 1080.0,
+    "cancelada": false
+  }
+]
