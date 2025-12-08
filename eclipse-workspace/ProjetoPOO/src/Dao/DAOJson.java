@@ -6,12 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class DAOJson<T> implements Persistencia<T> {
 
     private File arquivo;
-    private Gson gson = new Gson();
     private Type tipoLista;
+
+    // Gson correto, com adapters
+    private final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+            .setPrettyPrinting()
+            .create();
 
     public DAOJson(String nomeArquivo, Type tipoLista) {
         this.arquivo = new File("data/" + nomeArquivo);
@@ -52,7 +62,6 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         salvarLista(lista);
     }
 
-    
     public T buscar(int id) {
         List<T> lista = carregarLista();
         for (T obj : lista) {
@@ -66,14 +75,10 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         return null;
     }
 
-    
-    
     public List<T> listar() {
         return carregarLista();
     }
 
-    
-    
     public void remover(int id) {
         List<T> lista = carregarLista();
         lista.removeIf(obj -> {
@@ -87,9 +92,7 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         });
         salvarLista(lista);
     }
-    
-    
-    
+
     public void editar(T objAtualizado) {
         List<T> lista = carregarLista();
 
@@ -101,8 +104,8 @@ public abstract class DAOJson<T> implements Persistencia<T> {
                 int idItem = (int) item.getClass().getMethod("getId").invoke(item);
 
                 if (idItem == idAtualizado) {
-                    lista.set(i, objAtualizado);   
-                    salvarLista(lista);            
+                    lista.set(i, objAtualizado);
+                    salvarLista(lista);
                     return;
                 }
             }
@@ -111,4 +114,3 @@ public abstract class DAOJson<T> implements Persistencia<T> {
         }
     }
 }
-

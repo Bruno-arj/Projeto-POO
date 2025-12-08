@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import Model.Espaco;
+import Model.CabineIndividual;
 import Model.Reserva;
 import Dao.ReservaDAO;
 
@@ -20,16 +21,15 @@ public class ReservaService {
         return lista.isEmpty() ? 1 : lista.get(lista.size() - 1).getId() + 1;
     }
 	
-	public String reserva(Espaco espaco, String datainicio, String datafim, 
-			double valorCalculado,boolean cancelada) {
+	public String reserva(CabineIndividual espaco, String datainicio, String datafim) {
 		
 		LocalDateTime inicio = ConverterData(datainicio);
 		LocalDateTime fim = ConverterData(datafim);
 		if (fim.isBefore(inicio)) {
-			return "Erro throws quando der certo coloca pra retorna o preco";
+			return "é antes Erro throws quando der certo coloca pra retorna o preco";
 		}
 		else if(inicio.equals(fim)) {
-			return "Erro throws quando der certo coloca pra retorna preco";
+			return "inicio fim";
 		}
 		else if(VerificarDatas(inicio, fim) == "Erro conflito") {
 			return "Erro conflito";
@@ -61,4 +61,8 @@ public class ReservaService {
 		}
 		return "Tudo certo"; 
 	}
+	
+	public List<Reserva> listar() {
+        return reservaDao.listar();
+    }
 }

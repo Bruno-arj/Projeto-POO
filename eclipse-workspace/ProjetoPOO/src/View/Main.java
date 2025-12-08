@@ -1,19 +1,54 @@
 package View;
 import Service.*;
+import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		ReservaCabineIndividualService service = new ReservaCabineIndividualService();
-		ReservaAuditorioService serviceAuditorio = new ReservaAuditorioService();
-		ReservaSalaDeReuniaoService serviceSalaDeReuniao = new ReservaSalaDeReuniaoService();
-		CancelamentoService cancelamento = new CancelamentoService();
-		
-		System.out.println(service.ReservaCabine(0, "Kauã", 1, false, "08/12/2025 20:12", "11/12/2025 20:50"));
-		System.out.println(serviceAuditorio.ReservaAuditorio(0, "Kauã", 1, false, "10/11/2025 20:50", "11/11/2025 20:50"));
-		System.out.println(serviceSalaDeReuniao.ReservaSalaDeReuniao(0, "Kauã", 1, false, false, "10/11/2025 20:50", "11/11/2025 20:50"));
-		System.out.println(serviceSalaDeReuniao.ReservaSalaDeReuniao(0, "Kauã", 1, false, false, "09/11/2025 20:50", "20/11/2025 20:50"));
-		System.out.println(service.getListaIndividual().get(0));
-		System.out.println(cancelamento.Cancelamento(service.getListaIndividual().get(0)));
-	}
+				Scanner in = new Scanner(System.in);
+				int menu = 0;
+				
+				do {
+				    try {
+				        System.out.println("--- Menu do Gerenciamento de Coworking ---");
+				        System.out.println("1 - Cadastrar espaço");
+				        System.out.println("2 - Reservar espaço");
+				        System.out.println("3 - Cancelar reserva");
+				        System.out.println("4 - Registros de pagamento");
+				        System.out.println("5 - Exibição de relatório");
+				        System.out.println("6 - Sair");
+				        System.out.print("Escolha a opção pelo número: ");
 
+				        menu = in.nextInt();
+				        in.nextLine(); 
+
+				        if (menu < 1 || menu > 6) {
+				            System.out.println("Opção inválida! Digite um número entre 1 e 6.\n");
+				        }
+
+				    } catch (Exception e) {
+				        System.out.println("Entrada inválida! Digite apenas números.\n");
+				        in.nextLine();
+				    }
+				    switch (menu) {
+	                case 1:
+	                    CadastroEspacoView.MostrarCadastro();
+	                    break;
+	                case 2:
+	                    ;
+	                    break;
+	                case 3:
+	                    ;
+	                    break;
+	                case 4:
+	                    ;
+	                    break;
+	                case 5:
+	                    ;
+	                    break;
+	                case 6:
+	                    System.out.println("Encerrando...");
+	                    break;
+				    }
+				} while (menu != 6);
+	}				
 }
